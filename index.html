@@ -1,18 +1,148 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Maratona Vanguarda de Programação</title>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 15vh; }
-    a { display: block; width: 320px; margin: 20px auto; padding: 20px;
-        background: #1a5fb4; color: #fff; text-decoration: none;
-        font-size: 22px; border-radius: 8px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maratona Vanguarda de Programação</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; color: #222; line-height: 1.6; margin: 0; background: #f5f6f8; }
+  header { background: #1a5fb4; color: #fff; text-align: center; padding: 28px 16px; }
+  header .evento { font-size: 16px; opacity: .85; margin: 0 0 6px; }
+  header h1 { margin: 0; font-size: 32px; }
+  .botoes { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 28px 16px 8px; }
+  .botoes a { width: 300px; padding: 20px; background: #1a5fb4; color: #fff; text-decoration: none;
+              font-size: 22px; text-align: center; border-radius: 8px; }
+  .botoes a:hover { background: #144a8c; }
+  main { max-width: 860px; margin: 24px auto 48px; padding: 8px 28px 28px; background: #fff;
+         border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+  h2 { color: #1a5fb4; border-bottom: 2px solid #1a5fb4; padding-bottom: 6px; margin-top: 28px; }
+  h3 { margin-top: 28px; }
+  h4 { margin-top: 22px; }
+  blockquote { margin: 16px 0; padding: 10px 16px; background: #fff7e0; border-left: 4px solid #e5a50a; }
+  pre { background: #1e1e2e; color: #f1f1f1; padding: 14px 16px; border-radius: 6px; overflow-x: auto; }
+  code { font-family: Consolas, "Courier New", monospace; background: #eceef2; padding: 1px 5px; border-radius: 3px; }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border: 1px solid #c8ccd4; padding: 8px 10px; text-align: left; }
+  th { background: #eef2f8; }
+  td.num, th.num { text-align: right; }
+  hr { border: none; border-top: 1px solid #d5d8de; margin: 28px 0; }
+</style>
 </head>
 <body>
+
+<header>
+  <p class="evento">Jornada de Ciência e Tecnologia 2026 - Faculdade Vanguarda</p>
   <h1>Maratona Vanguarda de Programação</h1>
+</header>
+
+<div class="botoes">
   <a href="https://maratona-vanguarda-de-programa-o-aquecimento.moj.naquadah.com.br/">Aquecimento</a>
   <a href="https://maratona-vanguarda-de-programa-o.moj.naquadah.com.br/">Maratona</a>
+</div>
+
+<main>
+
+<h2>Como funciona a pontuação da Maratona</h2>
+
+<h3>Regra principal</h3>
+
+<p>A maratona segue o modelo de competições de programação por equipes. A equipe que resolver o maior número de problemas durante a competição ficará à frente no placar.</p>
+
+<p>Se duas ou mais equipes resolverem a mesma quantidade de problemas, ficará à frente a equipe com o <strong>menor tempo corrigido</strong>, também chamado de penalidade total.</p>
+
+<h3>Como o placar é ordenado</h3>
+
+<p>As equipes são classificadas na seguinte ordem:</p>
+
+<ol>
+  <li>Maior número de problemas resolvidos.</li>
+  <li>Em caso de empate, menor tempo corrigido.</li>
+  <li>Se o empate persistir, fica à frente a equipe cuja última submissão aceita ocorreu mais cedo.</li>
+  <li>Se necessário, compara-se a penúltima submissão aceita, depois a anterior, e assim sucessivamente.</li>
+</ol>
+
+<blockquote><strong>Importante:</strong> resolver mais problemas é sempre mais importante do que ter uma penalidade menor.</blockquote>
+
+<h4>Exemplo rápido</h4>
+
+<ul>
+  <li><strong>Equipe A:</strong> 5 problemas resolvidos; 650 minutos de penalidade.</li>
+  <li><strong>Equipe B:</strong> 4 problemas resolvidos; 220 minutos de penalidade.</li>
+</ul>
+
+<p>A <strong>Equipe A</strong> fica à frente, pois resolveu mais problemas.</p>
+
+<hr>
+
+<h3>Como calcular a penalidade</h3>
+
+<p>Um problema só conta como resolvido quando a solução recebe o veredito <strong>Accepted</strong>.</p>
+
+<p>Para cada problema aceito, o tempo contabilizado é:</p>
+
+<pre><code>Minuto da primeira submissão Accepted
++ 5 minutos por submissão incorreta anterior naquele problema</code></pre>
+
+<p>A penalidade total da equipe é a soma dos tempos contabilizados apenas nos problemas resolvidos.</p>
+
+<h4>Regras importantes</h4>
+
+<ul>
+  <li>Cada submissão rejeitada antes do primeiro <code>Accepted</code> em um problema acrescenta <strong>5 minutos</strong>.</li>
+  <li>Um <code>Compilation Error</code> não acrescenta penalidade.</li>
+  <li>Tentativas incorretas em um problema que não foi resolvido <strong>não entram</strong> na penalidade total.</li>
+  <li>Depois que um problema é aceito, novas submissões para ele não alteram o placar.</li>
+</ul>
+
+<hr>
+
+<h3>Exemplo completo</h3>
+
+<p>A competição começou às 13h00. Uma equipe realizou as seguintes submissões:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Problema</th>
+      <th>Submissões</th>
+      <th class="num">Cálculo</th>
+      <th class="num">Tempo no placar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>A</td><td><code>Wrong Answer</code> aos 25 min; <code>Accepted</code> aos 50 min</td><td class="num">50 + 5</td><td class="num">55 min</td></tr>
+    <tr><td>B</td><td><code>Accepted</code> aos 85 min</td><td class="num">85</td><td class="num">85 min</td></tr>
+    <tr><td>C</td><td><code>Time Limit Exceeded</code> aos 30 min; <code>Wrong Answer</code> aos 65 min</td><td class="num">Não foi aceito</td><td class="num">0 min</td></tr>
+    <tr><td>D</td><td><code>Compilation Error</code> aos 20 min; <code>Accepted</code> aos 110 min</td><td class="num">110</td><td class="num">110 min</td></tr>
+  </tbody>
+</table>
+
+<p>A equipe resolveu os problemas <strong>A, B e D</strong>, totalizando <strong>3 problemas resolvidos</strong>.</p>
+
+<pre><code>Tempo corrigido = 55 + 85 + 110
+Tempo corrigido = 250 minutos</code></pre>
+
+<p>Portanto, o resultado da equipe será:</p>
+
+<pre><code>Problemas resolvidos: 3
+Penalidade total: 250 minutos</code></pre>
+
+<p>Os erros do problema C não entram no placar, pois o problema não foi resolvido. O <code>Compilation Error</code> do problema D também não adiciona 5 minutos de penalidade.</p>
+
+<hr>
+
+<h3>Dicas para a equipe</h3>
+
+<ul>
+  <li>Leiam atentamente o enunciado, os limites e o formato de entrada e saída.</li>
+  <li>Testem casos de borda antes de enviar a solução.</li>
+  <li>Evitem submeter soluções “por tentativa”, pois cada erro em um problema posteriormente aceito custa 5 minutos.</li>
+  <li>Não deixem de submeter uma solução pronta por excesso de revisão: o tempo até o aceite também conta.</li>
+  <li>Organizem o trabalho em equipe: enquanto uma pessoa programa, as outras podem revisar a ideia, testar casos e analisar novos problemas.</li>
+</ul>
+
+</main>
+
 </body>
 </html>
